@@ -31,14 +31,14 @@ Repo.insert(changeset)
 
 
 
-params = %{username: "usuariomanager", password: Bcrypt.hashpwsalt("usuariomanager"), rol_id: 1}      
+params = %{username: "usuariomanager", password_hash: Bcrypt.hashpwsalt("usuariomanager"), rol_id: 1}      
 changeset = User.changeset(%User{}, params)
 Repo.insert(changeset)
 
-params = %{username: "usuariomember", password: Bcrypt.hashpwsalt("usuariomember"), rol_id: 2}  
+params = %{username: "usuariomember", password_hash: Bcrypt.hashpwsalt("usuariomember"), rol_id: 2}  
 changeset = User.changeset(%User{}, params)
 Repo.insert(changeset)
 
-params = %{username: "usuarioobserver", password: Bcrypt.hashpwsalt("usuarioobserver"), rol_id: 3}
+params = %{username: "usuarioobserver", password_hash: Bcrypt.hashpwsalt("usuarioobserver"), rol_id: 3}
 changeset = User.changeset(%User{}, params)
 Repo.insert(changeset)
