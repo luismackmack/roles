@@ -5,7 +5,8 @@ defmodule Roles.Manager.DashboardController do
 	def index(conn, _params) do
 		render conn, "index.html"
 	end
-
+        
+        # We can do this function plug in module plugs  for let us define a connection transformation in other controllers
   	defp access_level(conn, _opts) do
   		rol_id = conn.assigns.current_user.rol_id
   		current_user_rol = Roles.Repo.get(Roles.Rol, rol_id)
