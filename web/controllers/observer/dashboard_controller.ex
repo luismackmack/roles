@@ -1,6 +1,6 @@
 defmodule Roles.Observer.DashboardController do
   use Roles.Web, :controller
-  plug :access_level, "user"
+  plug :access_level
 
 	def index(conn, _params) do
 	  render conn, "index.html"
