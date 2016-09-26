@@ -1,0 +1,4 @@
+<div class="jumbotron">
+  <h1> TEMPLATE MANAGER </h1>
+  <h2>In Dashboard for <%= @params.messenger %> </h2>
+</div>

@@ -1,33 +1,8 @@
 defmodule Roles.Member.DashboardController do
-  use Roles.Web, :controller
-  plug :access_level, "user"
+ 	use Roles.Web, :controller
 
 	def index(conn, _params) do
-	  render conn, "index.html"
+	 	conn = put_flash(conn, :info, "Member")
+	 	%{params: %{conn: conn, template: "member_index.html", messenger: "Member"}}
 	end
-
-  	defp access_level(conn, _opts) do
-  		rol_id = conn.assigns.current_user.rol_id
-  		current_user_rol = Roles.Repo.get(Roles.Rol, rol_id)
-  		cond do
-	    	current_user_rol == nil ->
-	    		conn
-	    		|> put_flash(:error, "You must be logged in to access that page")
-	    		|> redirect(to: session_path(conn, :new))
-
-	    	current_user_rol.rolname != "member" ->
-	    		conn
-	    		|> put_layout(false)
-	    		|> put_status(:not_found)
-	    		|> render(Roles.ErrorView, "404.html")
-	    		|> halt()
-
-	    	true -> 
-	    		conn
-
-	    end
-  	end
-
-
-
 end

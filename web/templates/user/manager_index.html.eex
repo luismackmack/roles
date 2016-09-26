@@ -1,0 +1,20 @@
+<h2>Listing Users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @params.users do %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.rol.rolname %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

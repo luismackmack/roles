@@ -38,6 +38,6 @@ config :roles, Roles.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "roles_dev",
+  database: "roles2_dev",
   hostname: "localhost",
   pool_size: 10

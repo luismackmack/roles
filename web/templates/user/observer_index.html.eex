@@ -1,0 +1,18 @@
+<h2>User Data</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @params.user.username %></td>
+      <td><%= @params.user.rol.rolname %></td>
+    </tr>
+  </tbody>
+</table>

@@ -5,18 +5,13 @@ defmodule Roles.SessionController do
     render conn, "new.html"
   end
 
-  def create(conn, %{"session" => %{"username" => user, "password" => pass}}) do #  Parametros que vienen del frontend, formulario de logueo
+  def create(conn, %{"session" => %{"username" => user, "password" => pass}}) do
     case Roles.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo) do
-      {:ok, conn} ->
-        case conn.assigns.current_user.rol.rolname do
-          "manager" ->
-            redirect(conn, to: manager_dashboard_path(conn, :index))
-          "member" ->
-            redirect(conn, to: member_dashboard_path(conn, :index))
-          "observer" ->
-            redirect(conn, to: observer_dashboard_path(conn, :index))
-        end
 
+      {:ok, conn} ->
+        conn
+        |> put_flash(:info, "Welcome!")
+        |> redirect(to: dashboard_path(conn, :index))
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Invalid username/password combination")

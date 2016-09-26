@@ -15,37 +15,39 @@ defmodule Roles.Router do
   end
 
   scope "/", Roles do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
+    get "/dashboard", DashboardController, :index
+    get "/user", UserController, :index
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   scope "/manager", Roles.Manager, as: :manager do
     pipe_through :browser
 
-    #get "/dashboard", DashboardController, :index
-    resources "/dashboard", DashboardController
+    get "/dashboard", DashboardController, :index
+    get "/user", UserController, :index
   end
 
   scope "/member", Roles.Member, as: :member do
     pipe_through :browser
 
-    #get "/dashboard", DashboardController, :index
-    resources  "/dashboard", DashboardController
+    get "/dashboard", DashboardController, :index
+    get "/user", UserController, :index
   end
 
   scope "/observer", Roles.Observer, as: :observer do
     pipe_through :browser
 
-    #get "/dashboard", DashboardController, :index
-    resources "/dashboard", DashboardController
+    get "/dashboard", DashboardController, :index
+    get "/user", UserController, :index
+    
   end
-
-
 
   # Other scopes may use custom stacks.
   # scope "/api", Roles do
   #   pipe_through :api
   # end
+
 end
