@@ -5,4 +5,6 @@ defmodule Roles.Observer.DashboardController do
 		conn = put_flash(conn, :info, "Observer")
 		%{params: %{conn: conn, template: "observer_index.html", messenger: "Observer"}}
 	end
+
 end
+
